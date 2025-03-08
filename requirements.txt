@@ -1,0 +1,5 @@
+opencv-python-headless  # Use headless version in the cloud
+ultralytics
+numpy
+websockets
+python-dotenv
