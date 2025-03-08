@@ -1,7 +1,12 @@
+import os
+
 import cv2 as cv
-from ultralytics import YOLO
 import numpy as np
 import screeninfo
+from dotenv import load_dotenv
+from ultralytics import YOLO
+
+load_dotenv()
 
 # Load model
 model = YOLO("yolo11n.pt")
@@ -14,7 +19,7 @@ screen = screeninfo.get_monitors()[screen_id]
 screen_resolution = (screen.width, screen.height)
 cv.namedWindow("Object tracker", cv.WINDOW_NORMAL)
 cv.setWindowProperty("Object tracker", cv.WND_PROP_FULLSCREEN, cv.WINDOW_FULLSCREEN)
-cap = cv.VideoCapture(0)
+cap = cv.VideoCapture(os.getenv("VIDEO_SOURCE"))
 cap.set(cv.CAP_PROP_FRAME_WIDTH, screen_resolution[0])
 cap.set(cv.CAP_PROP_FRAME_HEIGHT, screen_resolution[1])
 
